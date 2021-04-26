@@ -33,6 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 // children: <Widget>[],
                 children: <Widget>[
                   Container(
+                    
                     width: double.infinity,
                     child: Card(
                       color: Colors.blue,
@@ -40,29 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       elevation: 5,
                     ),
                   ),
-                  Container(
-                    width: double.infinity,
-                    child: Card(
-                      // color: Colors.blueGrey,
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                            border: UnderlineInputBorder(),
-                            labelText: 'Enter your username'),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    child: Card(
-                      // color: Colors.blueGrey,
-                      child: TextFormField(
-                        obscureText : true,
-                        decoration: InputDecoration(
-                            border: UnderlineInputBorder(),
-                            labelText: 'password'),
-                      ),
-                    ),
-                  ),
+                  // 
                   Column(
                       children: transaction.map((tx) {
                     return Card(
@@ -71,15 +50,33 @@ class _MyHomePageState extends State<MyHomePage> {
                         Container(
                           margin: EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black, width: 1),
+                            border: Border.all(
+                                // color: Colors.black,
+                                width: 2,
+                                color: Colors.purple),
                           ),
                           padding: EdgeInsets.all(5),
-                          child: Text(tx.amount.toString()),
+                          child: Text(
+                            '${tx.amount}',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: Colors.purple),
+                          ),
                         ),
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text(tx.title),
-                            Text(tx.date.toString()),
+                            Text(
+                              tx.title,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
+                            Text(tx.date.toString(),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                    color: Colors.grey[500])),
                           ],
                         )
                       ],
