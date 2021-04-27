@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import './transaction.dart';
 
 // void main() {
@@ -26,14 +27,16 @@ class _MyHomePageState extends State<MyHomePage> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-            appBar: AppBar(title: Text("menu")),
+            appBar: AppBar(
+              title: Text("menu"),
+              elevation: 0.0,
+            ),
             body: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 // children: <Widget>[],
                 children: <Widget>[
                   Container(
-                    
                     width: double.infinity,
                     child: Card(
                       color: Colors.blue,
@@ -41,7 +44,43 @@ class _MyHomePageState extends State<MyHomePage> {
                       elevation: 5,
                     ),
                   ),
-                  // 
+
+                  // INPUT AREA
+                  Card(
+                    child: Row(
+                      children: <Widget>[
+                        new Flexible(
+                            child: TextField(
+                                decoration: InputDecoration(
+                                    border: UnderlineInputBorder(),
+                                    labelText: 'Title'))),
+                        SizedBox(
+                          width: 20.0,
+                        ),
+                        new Flexible(
+                            child: TextField(
+                                decoration: InputDecoration(
+                                    border: UnderlineInputBorder(),
+                                    labelText: 'Amount'))),
+                        SizedBox(
+                          width: 20.0,
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 22),
+                          child: new Flexible(
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: Text('Add Transaction'),
+                            ),
+                          ),
+                        ),
+
+                        // TextField()
+                      ],
+                    ),
+                  ),
+                  // INPUT AREA
+                  //
                   Column(
                       children: transaction.map((tx) {
                     return Card(
@@ -72,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 18),
                             ),
-                            Text(tx.date.toString(),
+                            Text(DateFormat('dd-MM-yyyy').format(tx.date),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
